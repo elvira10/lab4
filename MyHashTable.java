@@ -24,6 +24,9 @@ public class MyHashTable<K, V> {
         this.size = 0;
     }
     public MyHashTable(int M) {
+        this.chainArray = new HashNode[M];
+        this.size = 0;
+        this.M = M;
     }
 
 }
