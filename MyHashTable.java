@@ -97,5 +97,15 @@ public class MyHashTable<K, V> {
         }
         return false;
     }
-
+    public K getKey(V value) {
+        for (HashNode<K, V> node : chainArray) {
+            while (node != null) {
+                if (node.value.equals(value)) {
+                    return node.key;
+                }
+                node = node.next;
+            }
+        }
+        return null;
+    }
 }
