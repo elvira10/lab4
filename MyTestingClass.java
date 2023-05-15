@@ -14,4 +14,15 @@ public class MyTestingClass {
         result = 31 * result + Integer.hashCode(age);
         return result;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof MyTestingClass)) {
+            return false;
+        }
+        MyTestingClass other = (MyTestingClass) obj;
+        return id == other.id && name.equals(other.name) && age == other.age;
+    }
 }
