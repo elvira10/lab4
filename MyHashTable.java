@@ -55,7 +55,8 @@ public class MyHashTable<K, V> {
         chainArray[index] = newNode;
         size++;
     }
-    public V get(K key){
+
+    public V get(K key) {
         int index = hash(key);
         HashNode<K, V> node = chainArray[index];
         while (node != null) {
@@ -66,6 +67,7 @@ public class MyHashTable<K, V> {
         }
         return null;
     }
+
     public V remove(K key) {
         int index = hash(key);
         HashNode<K, V> prev = null;
@@ -85,6 +87,7 @@ public class MyHashTable<K, V> {
         }
         return null;
     }
+
     public boolean contains(V value) {
         for (int i = 0; i < chainArray.length; i++) {
             HashNode<K, V> node = chainArray[i];
@@ -97,6 +100,7 @@ public class MyHashTable<K, V> {
         }
         return false;
     }
+
     public K getKey(V value) {
         for (HashNode<K, V> node : chainArray) {
             while (node != null) {
@@ -107,5 +111,19 @@ public class MyHashTable<K, V> {
             }
         }
         return null;
+    }
+
+    public int[] getBucketCount() {
+        int[] result = new int[M];
+        for (int i = 0; i < M; i++) {
+            int length = 0;
+            HashNode<K, V> pointer = chainArray[i];
+            while (pointer != null) {
+                pointer = pointer.next;
+                length++;
+            }
+            result[i] = length;
+        }
+        return result;
     }
 }

@@ -8,7 +8,7 @@ public class MyTestingClass {
         this.name = name;
         this.age = age;
     }
-    public int HashCode() {
+    public int hashCode() {
         int result = Integer.hashCode(id);
         result = 31 * result + name.hashCode();
         result = 31 * result + Integer.hashCode(age);
