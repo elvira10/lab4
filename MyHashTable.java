@@ -162,4 +162,17 @@ public class MyHashTable<K, V> {
         }
         return result; //return the array of bucket counts
     }
+    public void replace (K key, V value, V newvalue){
+        int index = hash(key);
+        HashNode<K, V> node = chainArray [index];
+        while(node!=null) {
+            if (node.key.equals(key)) {
+                node.value = newvalue;
+            }
+        }
+        HashNode<K,V> newNode = new HashNode<>(key, value);
+        newNode.next = chainArray[index];
+        chainArray[index]=newNode;
+        size++;
+    }
 }
